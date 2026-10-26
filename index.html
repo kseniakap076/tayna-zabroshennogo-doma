@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тайна заброшенного дома — Вечер Ужаса</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<div class="brand">Вечер Ужаса<b>Тайна заброшенного дома</b></div>
+		<div class="header-actions">
+			<button class="secondary" id="musicToggle">♫ Музыка: выкл.</button>
+			<button class="secondary" id="full">⛶ Проектор</button>
+		</div>
+	</header>
+	<div class="progress">
+		<div id="progressBar"></div>
+	</div>
+	<main>
+		<section class="screen-main screen active" id="s0">
+			<div class="container">
+				<h1>Тайна<br>заброшенного дома</h1>
+				<div class="story">
+					<p>Давным-давно, в этом самом месте, где мы сейчас находимся, стоял старый особняк…</p>
+					<p>Его владелец, безумный изобретатель, проводил странные эксперименты.</p>
+					<p>Однажды ночью раздался грохот, вспышка света… и особняк исчез. Говорят, что дух изобретателя до сих пор бродит здесь, охраняя свои секреты. Он оставляет загадки для смельчаков…</p>
+					<p>Сегодня вы оказались в его ловушке.</p>
+				</div>
+				<div class="question">Сможете ли вы разгадать все тайны и выбраться?</div>
+				<button class="primary" onclick="go(1)">Войти в дом</button>
+			</div>
+		</section>
+	<section class="screen" id="s1">
+		<div class="container">
+			<div class="topline"><div><div class="kicker">Глава II · Игрушка проснулась</div><h2>Испытание ожившей куклы</h2></div><span class="pill">Фото-челлендж · 5 раундов</span></div>
+			<div class="grid2"><div class="panel"><div class="big-emoji"></div><h3>Повтори позу!</h3><p>Дверь за вами захлопнулась, и из темноты донёсся смех куклы. На полу лежит странная синяя кукла — говорят, она повторяет движения тех, кто осмелится посмотреть на неё. Встаньте в круг, подбросьте куклу, а когда она упадет, все должны замереть и повторить её позу. Пройдите пять раундов и сохраните снимки в летописи особняка.</p><div class="notice">Подсказка из дневника смотрителя: подбрасывайте игрушку невысоко. Особняк не любит неосторожности.</div><div class="controls"><button class="primary" onclick="nextRound()">Следующий раунд ▶</button><button class="secondary" onclick="resetRounds()">Начать заново</button></div><p id="roundLabel" class="small">Раунд 1 из 5 — подготовьте камеру</p></div>
+			<div class="panel"><h3>Фото раундов</h3><input id="roundPhotos" type="file" accept="image/*" multiple><div class="photo-grid" id="roundPhotoGrid"><div class="photo-slot"><span>Фото раунда 1</span></div><div class="photo-slot"><span>Фото раунда 2</span></div><div class="photo-slot"><span>Фото раунда 3</span></div><div class="photo-slot"><span>Фото раунда 4</span></div><div class="photo-slot"><span>Фото раунда 5</span></div></div></div></div>
+			<div class="navbottom"><button class="secondary" onclick="go(0)">← Вступление</button><button class="primary" onclick="go(2)">Следующая дверь →</button></div>
+		</div>
+	</section>
+
+	<section class="screen" id="s2">
+		<div class="container">
+			<div class="topline"><div><div class="kicker">Глава III · Бал в полночь</div><h2>Бал оживших скелетов</h2></div><span class="pill">Музыка + случайные остановки</span></div>
+			<div class="grid2"><div class="panel"><div class="big-emoji"></div><p>Вы находите бальный зал. Под пыльными люстрами скелеты внезапно начинают танцевать — и приглашают вас присоединиться. Но у хозяина дома есть правило: когда музыка умолкает, каждый обязан застыть в определенном образе. Тот, кто пошевелится, покидает бал. Продержитесь до финала: особняк признает двух самых неподвижных и артистичных гостей.</p><div class="freeze-prompt" id="dancePrompt">Готовы танцевать?</div><div class="play-area"><div><button class="primary" id="danceStart">▶ Начать танец</button> <button class="secondary" id="danceNext" disabled>Следующая поза</button><p class="small" id="danceStatus">Нажмите «Начать танец». Звук включится после нажатия.</p></div><div class="timer" id="danceTimer">—</div></div><div class="notice">Шорох ветра и протяжный вой звучат в старом бальном зале и внезапно стихают в случайный момент. Услышав задание, немедленно замрите! Если музыка остановилась, ведущий выбирает позу, а участники изображают её без движения.</div></div>
+			<div class="panel"><h3>Герои призрачного бала</h3><p class="small">Особняк запомнит тех, кто лучше всех выдержал испытание. Впишите имена двух победителей и добавьте их фотографии в хронику бала.</p><label>Имя победителя 1</label><input type="text" id="winner1" placeholder="Имя"><label>Имя победителя 2</label><input type="text" id="winner2" placeholder="Имя"><input id="winnerPhotos" type="file" accept="image/*" multiple><div class="photo-grid winners" id="winnerPhotoGrid"><div class="photo-slot"><span>Победитель 1</span></div><div class="photo-slot"><span>Победитель 2</span></div></div></div></div>
+			<div class="navbottom"><button class="secondary" onclick="go(1)">← Назад</button><button class="primary" onclick="go(3)">Следующая дверь →</button></div>
+		</div>
+	</section>
+
+	
+<section class="screen" id="s3">
+  <div class="container">
+
+    <div class="topline">
+      <div>
+        <div class="kicker">Глава IV · Лаборатория</div>
+        <h2>Коробка из лаборатории</h2>
+      </div>
+      <span class="pill">Коробка тайн</span>
+    </div>
+
+    <div class="grid2">
+
+      <div class="panel">
+        <div class="big-emoji"></div>
+
+        <p>
+          За бальным залом вы замечаете дверь с табличкой
+          «Лаборатория изобретателя». На столе стоит запертая
+          на воображаемый замок коробка. Внутри спрятаны
+          предметы из его экспериментов. Не подглядывая,
+          осторожно ощупайте один предмет и внесите догадку
+          в журнал расследования. Когда все версии записаны,
+          обсудите свои предположения.
+        </p>
+
+        <div class="notice">
+          Записка из лаборатории: для испытания используйте
+          только безопасные предметы — губку, шишку,
+          игрушечного паука, кисточку, ткань или мячик.
+          Не кладите острые, горячие, грязные или аллергенные вещи.
+        </div>
+
+        <label for="touchGuess">Ответ участника</label>
+        <input
+          type="text"
+          id="touchGuess"
+          placeholder="Что, по-твоему, внутри?"
+        >
+
+        <div class="controls">
+          <button class="primary" onclick="saveTouch()">
+            Записать ответ
+          </button>
+        </div>
+
+        <p
+          id="touchFeedback"
+			class="small"
+			aria-live="polite"
+			></p>
+		</div>
+
+		<div class="panel">
+			<h3>Журнал расследования</h3>
+
+			<div id="touchAnswers">
+			<p class="small">Пока ответов нет.</p>
+			</div>
+
+			<button class="secondary" onclick="clearTouches()">
+			Очистить список
+			</button>
+		</div>
+
+		</div>
+
+		<div class="navbottom">
+		<button class="secondary" onclick="go(2)">
+			← Назад
+		</button>
+
+		<button class="primary" onclick="go(4)">
+			Следующая дверь →
+		</button>
+		</div>
+
+	</div>
+	</section>
+
+
+	<section class="screen" id="s4">
+		<div class="container">
+			<div class="topline"><div><div class="kicker">Глава V · Страницы дневника</div><h2>Кто скрывается во тьме?</h2></div><span class="pill">5 загадок</span></div>
+			<div class="panel"><p>В лабораторной книге не хватает пяти страниц. На каждой осталась лишь улика — часть тела таинственного существа. Рассмотрите подсказки и запишите, кто, по-вашему, скрывается во тьме. Когда все версии будут готовы, ведущий откроет страницы дневника и раскроет ответы.</p><div class="grid3" id="monsterCards"></div><div class="controls"><button class="secondary" onclick="revealAllMonsters()">Открыть все ответы</button><button class="secondary" onclick="resetMonsters()">Сбросить ответы</button></div></div>
+			<div class="navbottom"><button class="secondary" onclick="go(3)">← Назад</button><button class="primary" onclick="go(5)">Следующая дверь →</button></div>
+		</div>
+	</section>
+
+
+<section class="screen" id="s5">
+  <div class="container">
+
+    <div class="topline">
+      <div>
+        <div class="kicker">Глава VI · Последнее послание</div>
+        <h2>Конверт изобретателя</h2>
+      </div>
+      <span class="pill">Нажмите на конверт</span>
+    </div>
+
+    <div class="panel envelope-panel">
+
+      <p class="story" style="text-align:center;max-width:760px;margin:0 auto 22px">
+        На старом столе лежит запечатанный конверт.
+        На нём — знакомый знак изобретателя.
+        Кажется, внутри спрятана последняя подсказка…
+      </p>
+
+      <button
+        class="envelope-button"
+        id="envelopeButton"
+        onclick="openEnvelope()"
+        aria-label="Открыть конверт"
+      >
+        <span class="envelope-back"></span>
+
+        <span class="letter" id="letter">
+          <span class="letter-stamp">ПОСЛЕДНЯЯ ЗАПИСКА</span>
+
+          <span class="letter-text">
+            Вы на верном пути.<br><br>
+            Чтобы открыть выход, докажите, что знаете
+            всех обитателей моего дома.
+          </span>
+        </span>
+
+        <span class="envelope-flap"></span>
+        <span class="envelope-front"></span>
+        <span class="seal">✦</span>
+      </button>
+
+      <p
+        id="envelopeHint"
+        class="small"
+        style="text-align:center"
+      >
+        Коснитесь конверта, чтобы открыть письмо.
+      </p>
+
+      <div class="notice" style="margin-top:24px">
+        <strong>🎃 Подсказка: Угадай обитателя дома!</strong>
+        <p>
+          Выберите несколько участников. Вместе или по очереди
+          без единого слова изобразите кого-нибудь, связанного
+          с Хэллоуином: вампира, ведьму, зомби, привидение,
+          скелета или другого жуткого персонажа.
+        </p>
+        <p>
+          Используйте только жесты, мимику и движения.
+          Остальные участники должны догадаться, кого вы изображаете.
+          Разговаривать и подсказывать словами нельзя!
+        </p>
+      </div>
+
+    </div>
+
+    <div class="navbottom">
+      <button class="secondary" onclick="go(4)">
+        ← Назад
+      </button>
+
+      <!-- <button class="primary" onclick="go(6)">
+        Открыть выход →
+      </button> -->
+	  	<button class="primary" onclick="goToFinale()">
+			Открыть выход →
+		</button>
+    </div>
+
+  </div>
+</section>
+
+
+	<section class="screen" id="s6">
+		<div class="container">
+			<div class="topline"><div><div class="kicker">Глава VII · Свобода!</div><h2>Дверь открылась — вы спасены!</h2></div><span class="pill">Финал приключения</span></div>
+			<div class="escape-scene" id="escapeScene">
+				<div class="escape-copy"><div class="big-emoji"></div><p>Вдруг замок щёлкает, массивная дверь медленно распахивается, и в дом врывается лунный свет. Вы разгадали тайны изобретателя и наконец-то можете выбраться!</p><p>На пороге появляется призрак хозяина. Он уже не сердится — наоборот, благодарит вас за смелость и оставляет каждому гостю сладкое угощение. Заберите свои сладости у ведущего!</p></div></div>
+			<div class="navbottom"><button class="secondary" onclick="go(5)">← Последняя записка</button><button class="primary" onclick="go(7)">🎁 Перейти к розыгрышу призов →</button></div>
+		</div>
+	</section>
+
+	<section class="screen" id="s7">
+		<div class="container">
+			<div class="topline"><div><div class="kicker">Дополнительная глава · Подарки призрака</div><h2>Доска удачи</h2></div><span class="pill">Розыгрыш призов</span></div>
+			<div class="panel raffle-panel">
+			<p>Теперь, когда вы выбрались из дома, пришло время подарков! Введите имена участников — каждое с новой строки. Нажмите «Создать доску», затем разыграйте призы по очереди. Победитель отмечается крестом и больше не участвует в следующих розыгрышах.</p>
+			<label for="participantNames">Имена участников</label><textarea id="participantNames" rows="4" placeholder="Аня&#10;Миша&#10;Саша&#10;..." style="width:100%;resize:vertical"></textarea>
+			<div class="controls"><button class="primary" onclick="buildLuckyBoard()">📌 Создать доску</button><button class="secondary" onclick="resetLuckyBoard()">Сбросить розыгрыш</button></div>
+			<div class="pinboard" id="luckyBoard"><p class="small">Здесь появятся карточки участников — словно приколотые к доске.</p></div>
+			<div class="raffle-controls"><button class="primary" id="drawSubscription" onclick="drawPrize('subscription')" disabled>🎟️ Разыграть абонемент на месяц</button><button class="primary" id="drawHeadphones" onclick="drawPrize('headphones')" disabled>🎧 Разыграть наушники</button></div>
+			<div class="raffle-result" id="raffleResult" aria-live="polite">Сначала создайте доску участников.</div>
+			</div>
+			<div class="navbottom"><button class="secondary" onclick="go(6)">← Вернуться к финалу истории</button><button class="primary" onclick="go(8)">📸 Сделать общее фото →</button></div>	
+		</div>
+	</section>
+
+	<section class="screen" id="s8">
+		<div class="container">
+			<div class="photo-finale">
+					<div class="photo-copy">
+					<div class="kicker">Последняя страница · На память</div>
+					<h2 class="photo-title">А теперь — совместное фото!</h2>
+					<p>На том месте, где когда-то стоял особняк, мы фотографируемся.</p>
+					<p>Добавьте это фото в приложение. Когда нажмёте кнопку «Отправить», в верхнем правом углу фотографии автоматически появится призрак изобретателя!</p>
+					<label class="photo-upload">📷 Добавить общее фото<input id="groupPhotoInput" type="file" accept="image/*" onchange="loadGroupPhoto(event)"></label>
+					<div class="photo-actions"><button class="primary" id="sendGroupPhoto" onclick="sendGroupPhoto()" disabled>👻 Отправить фото</button><button class="secondary" onclick="clearGroupPhoto()">Выбрать другое</button></div>
+					<p id="photoStatus" class="small" aria-live="polite">Выберите фотографию с устройства.</p>
+					<div class="photo-actions"><button class="secondary" onclick="go(7)">← К розыгрышу призов</button><button class="secondary" onclick="go(0)">↻ В начало истории</button></div>
+					</div>
+				<div class="photo-frame" id="groupPhotoFrame"><div class="photo-placeholder" id="photoPlaceholder"><span class="camera">📸</span><strong>Здесь появится ваше общее фото</strong></div><img id="groupPhotoPreview" alt="" hidden>
+					<img
+					id="photoGhost"
+					class="photo-ghost"
+					src="images/ghost.png"
+					alt="Призрак изобретателя"
+					hidden
+					>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+<script src="script.js"></script>
+</body></html>
